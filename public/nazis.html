@@ -1,0 +1,31 @@
+<!DOCTYPE html>  
+<html lang="en">  
+<head>
+	<meta charset="UTF-8">
+	<title>Escape Room</title>
+	<script src="/socket.io/socket.io.js"></script>
+	<script src="main.js"></script>
+	<link rel="stylesheet" href="nazis.css">
+</head>  
+<body>
+<div class="countdown">
+	<span class="min">00</span>
+	<span class="separator">:</span>
+	<span class="sec">00</span>
+</div>
+
+<div id="clue-wrapper">
+	<div id="clue"></div>
+</div>
+
+<audio id="notice">
+    <source src="nazis.ogg" type="audio/ogg" />
+    <source src="nazis.mp3" type="audio/mpeg" />
+</audio>
+
+<audio id="end">
+    <source src="fin.ogg" type="audio/ogg" />
+    <source src="fin.mp3" type="audio/mpeg" />
+</audio>
+</body>  
+</html> 

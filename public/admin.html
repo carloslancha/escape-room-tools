@@ -1,0 +1,39 @@
+<!DOCTYPE html>  
+<html lang="en">  
+<head>  
+	<meta charset="UTF-8">
+	<title>Escape Room Admin</title>
+	<script src="/socket.io/socket.io.js"></script>
+	<script src="admin.js"></script>
+	<link rel="stylesheet" href="admin.css">
+</head>  
+<body>  
+	<h1>Escape Room Admin</h1>
+	<div class="countdown">
+		<span class="min">00</span>
+		<span class="separator">:</span>
+		<span class="sec">00</span>
+	</div>
+
+	<form onsubmit="return addClue(this)">
+		<div>
+			<textarea id="newClue" placeholder="Escribe la pista"></textarea>
+		</div>
+
+		<div>
+			<input type="submit" value="Enviar" />
+		</div>
+
+		<div>
+			<button onclick="return play()">PLAY</button>
+			<button onclick="return pause()">PAUSE</button>
+			<button onclick="return reset()">RESET</button>
+			<button onclick="return hideClue()">OCULTAR PISTA</button>
+		</div>
+	</form>
+
+	<div id="clue-wrapper">
+		<div id="clue"></div>
+	</div>
+</body>  
+</html> 

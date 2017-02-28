@@ -1,0 +1,54 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	background-color: black;
+	color: white;
+}
+
+h1 {
+	text-align: center;
+}
+
+.countdown {
+	font-size: 20em;
+	text-align: center;
+}
+
+.countdown .separator {
+	margin: -60px;
+}
+
+#clue-wrapper {
+	bottom: 0;
+	font-size: 4em;
+	position: absolute;
+	text-align: center;
+	width: 100%;
+}
+
+#clue {
+	padding: 20px;
+}
+
+form {
+	text-align: center;
+}
+
+form div {
+	padding-bottom: 20px;
+}
+
+form textarea {
+    height: 100px;
+    padding: 10px;
+	width: 70%;
+}
+
+form button, form input {
+    background-color: white;
+    border: none;
+	padding: 5px;
+}
