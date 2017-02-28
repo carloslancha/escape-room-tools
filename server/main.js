@@ -15,6 +15,10 @@ io.on('connection', function(socket) {
 	socket.emit('clue', clue);
 
 	socket.on('play', function() {
+		if (timer) {
+			return false;
+		}
+
 		timer = setInterval(function() {
 			time -= 1000;
 
@@ -36,6 +40,7 @@ io.on('connection', function(socket) {
 
 	socket.on('reset', function() {
 		clearInterval(timer);
+		timer = undefined;
 		time = 3600000;
 		io.sockets.emit('updateTime', time);
 
