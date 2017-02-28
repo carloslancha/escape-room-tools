@@ -20,23 +20,27 @@ function addClue(event) {
 
 	socket.emit('new-clue', newClue);
 
-  return false;
+	return false;
 }
 
 function play() {
 	socket.emit('play');
+	return false;
 }
 
 function pause() {
 	socket.emit('pause');
+	return false;
 }
 
-function reset() {
+function resetAll() {
 	socket.emit('reset');
+	return false;
 }
 
-function hideClue() {
+function hideClue(event) {
 	socket.emit('hide-clue');
+	return false;
 }
 
 function millisToMinutesAndSeconds(millis) {
