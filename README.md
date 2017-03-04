@@ -18,6 +18,6 @@
 
 4. Open the client at http://localhost:8080 on your browser to select the escape room.
 
-5. Open the admin at http://localhost:8080/admin.html on your browser to see the administration.
+5. Open the admin at http://localhost:8080/admin on your browser to see the administration.
 
 6. Have fun.
