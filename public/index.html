@@ -3,10 +3,31 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>Escape Room</title>
+		<link rel="stylesheet" href="/bootstrap/dist/css/bootstrap.min.css">
+		<style>
+			.container {
+				font-size: 5em;
+			}
+
+			.row {
+				margin-bottom: 50px;
+			}
+		</style>
 	</head>
 	<body>
-		<a href="/admin">Administración</a>
-		<a href="/quirofano">Quirófano</a>
-		<a href="/nazis">Nazis</a>
+		<div class="container text-center">
+			<div class="row">
+				<div class="col-md-12">
+					<a href="/admin">Administración</a>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-offset-1 col-md-4">
+					<a href="/quirofano">Quirófano</a>
+				</div>
+				<div class="col-md-offset-2col-md-4">
+					<a href="/nazis">Nazis</a>
+				</div>
+			</div>
 	</body>
 </html> 
