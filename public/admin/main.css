@@ -1,0 +1,15 @@
+#clock{
+	zoom: 300%;
+}
+
+#reset {
+	margin-left: 40px;
+}
+
+#newClueText {
+	margin-bottom: 10px;
+}
+
+#clue img {
+	max-height: 100px;
+}

@@ -1,0 +1,30 @@
+#cardiogram {
+  margin-top: -240px;
+}
+
+#cardiogram svg {
+  height: 600px;
+  width: 1200px;
+}
+
+#cardiogram path {
+  stroke: #259798;
+  stroke-width: 2px;
+  fill: none;
+  stroke-dasharray: 630, 500;
+  stroke-dashoffset: 0;
+  animation: pulse 4s infinite linear;
+  &:nth-child(1) {
+    stroke: #b7b4c2;
+  }
+}
+
+@keyframes pulse {
+  0% {
+    stroke-dashoffset: 1130;
+  }
+
+  100% {
+    stroke-dashoffset: 0;
+  }
+}

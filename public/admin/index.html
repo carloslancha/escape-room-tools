@@ -1,0 +1,67 @@
+<html>
+	<head>
+		<script src="/socket.io/socket.io.js"></script>
+		<script src="/jquery/dist/jquery.min.js"></script>
+		<script src="/flipclock/compiled/flipclock.min.js"></script>
+
+		<script src="main.js"></script>
+
+		<link rel="stylesheet" href="/bootstrap/dist/css/bootstrap.min.css">
+		<link rel="stylesheet" href="/flipclock/compiled/flipclock.css">
+
+		<link rel="stylesheet" href="/common/common.css">
+		<link rel="stylesheet" href="main.css">
+	</head>
+	<body>
+		<div id="clock"></div>
+
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12 controls text-center">
+					<button id="play" class="btn btn-default">PLAY</button>
+					<button id="pause" class="btn btn-default">PAUSE</button>
+					<button id="reset" class="btn btn-default">RESET</button>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-md-12 text-center">
+					Pista Mostrada: <span id="clue"></span>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-md-12">
+					<textarea id="newClueText" class="form-control" rows="3" placeholder="Escribe una pista" maxlength="80"></textarea>
+
+					<select id="newClueImage" class="form-control">
+						<option value="">Sin imagen</option>
+					</select>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-md-12">
+					<div class="text-center">
+						<button id="addClue" class="btn btn-default">ENVIAR</button>
+						<button id="hideClue" class="btn btn-default">OCULTAR PISTA</button>
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-md-12 form-inline">
+					<div class="form-group">
+						<label>Sonido:</label>
+						<select id="sound" class="form-control">
+							<option value="">Sin Sonido</option>
+						</select>
+					</div>
+
+					<button id="playSound" class="btn btn-default">PLAY</button>
+					<button id="stopSound" class="btn btn-default">STOP</button>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
