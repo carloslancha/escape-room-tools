@@ -11,7 +11,7 @@ var time,
 	imageList;
 
 function setDefaults() {
-	time = 5;	//seconds
+	time = 3600;	//seconds
 }
 
 function play() {
