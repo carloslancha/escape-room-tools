@@ -73,6 +73,12 @@
 
 			$('#playSound').removeClass('btn-primary');
 		});
+
+		$('#bg').change(function() {
+			var bgImage = $('#bg').val();
+
+			socket.emit('bg-change', bgImage);
+		});
 	}
 
 	function createClock() {
@@ -117,6 +123,21 @@
 		});
 	}
 
+	function getBackgrounds() {
+		$.ajax('http://localhost:8080/getBackgrounds', {
+			type: 'POST',
+			contentType: 'application/json',
+			success: function(images) { 
+				var imagesSelectElement = $('#bg');
+
+				images.forEach(function(image) {
+					imagesSelectElement.append($('<option>').attr('value', image).text(image));
+				})
+			},
+			error: function() { console.log('error');}
+		});
+	}
+
 	$(function() {
 		bindEvents();
 
@@ -124,5 +145,6 @@
 
 		getImages();
 		getSounds();
+		getBackgrounds();
 	});
 })();

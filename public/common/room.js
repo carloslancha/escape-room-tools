@@ -42,6 +42,10 @@
 			}
 		});
 
+		socket.on('change-bg', function(image) {
+			$('body').css('background-image', 'url("/assets/backgrounds/' + image + '")');
+		});
+
 		socket.on('end', function() {
 			document.querySelector('#endAudio').play();
 			setTimeout(function() {

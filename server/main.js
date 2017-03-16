@@ -60,6 +60,10 @@ function stopSound() {
 	io.sockets.emit('stop-sound');
 }
 
+function changeBackground(image) {
+	io.sockets.emit('change-bg', image);
+}
+
 io.on('connection', function(socket) {
 
 	socket.on('play', play);
@@ -75,6 +79,8 @@ io.on('connection', function(socket) {
 	socket.on('play-sound', playSound);
 
 	socket.on('stop-sound', stopSound);
+
+	socket.on('bg-change', changeBackground);
 });
 
 
@@ -103,6 +109,20 @@ app.post('/getSounds', function(req, res){
 		})
 
 		res.send(soundList);
+	});
+});
+
+app.post('/getBackgrounds', function(req, res){
+	fs.readdir(path.join(__dirname, '..', 'public', 'assets', 'backgrounds'), function(err, images) {
+		var imageList = [];
+
+		images.forEach(function(image) {
+			if (image.split('.')[1] === 'jpg') {
+				imageList.push(image);
+			}
+		})
+
+		res.send(imageList);
 	});
 });
 
