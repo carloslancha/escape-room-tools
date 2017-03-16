@@ -1,5 +1,6 @@
 body {
 	overflow: hidden;
+	background-position: center center;
 }
 
 #clock{
