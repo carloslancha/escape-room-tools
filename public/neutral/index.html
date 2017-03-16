@@ -1,0 +1,35 @@
+<html>
+	<head>
+		<script src="/socket.io/socket.io.js"></script>
+		<script src="/jquery/dist/jquery.min.js"></script>
+		<script src="/flipclock/compiled/flipclock.min.js"></script>
+
+		<script src="/common/room.js"></script>
+
+		<link rel="stylesheet" href="/flipclock/compiled/flipclock.css">
+
+		<link rel="stylesheet" href="/bootstrap/dist/css/bootstrap.min.css">
+		<link rel="stylesheet" href="/common/common.css">
+		<link rel="stylesheet" href="/common/room.css">
+	</head>
+
+	<body>
+		<div id="clock"></div>
+
+		<div class="container-fluid">
+			<div class="row">
+				<div id="clue" class="col-md-12 text-center"></div>
+			</div>
+		</div>
+
+		<audio id="newClueAudio">
+		    <source src="new-clue.ogg" type="audio/ogg" />
+		    <source src="new-clue.mp3" type="audio/mpeg" />
+		</audio>
+
+		<audio id="endAudio">
+		    <source src="end.ogg" type="audio/ogg" />
+		    <source src="end.mp3" type="audio/mpeg" />
+		</audio>
+	</body>
+</html>
