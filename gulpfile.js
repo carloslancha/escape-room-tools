@@ -15,7 +15,7 @@ gulp.task('run', ['build'], () => {
 
 	gulp.watch(['src/**/*.css', 'src/**/*.js', 'src/**/*.soy'], ['build']);
 
-    gulp.watch('server/index.js', function() {
+    gulp.watch('server/**/*.js', function() {
       server.start.bind(server)();
     });
 });
