@@ -11,6 +11,7 @@
   "dependencies": {
     "electric": "^2.0.1",
     "express": "^4.15.3",
-    "gulp-live-server": "0.0.30"
+    "gulp-live-server": "0.0.30",
+    "socket.io": "^2.0.3"
   }
 }
