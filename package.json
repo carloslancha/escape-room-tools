@@ -1,10 +1,11 @@
 {
-  "name": "EscapeRoomTools",
+  "name": "escape-room-tools",
   "version": "2.0.0",
   "description": "Tools to manage an escape room game.",
   "author": "carloslancha",
-  "dependencies": {
-  },
   "devDependencies": {
+    "electric-marble-components": "^2.0.0",
+    "marble": "~2.7.0",
+    "metal-toggler": "^2.0.0"
   }
 }
