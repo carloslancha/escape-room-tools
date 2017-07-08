@@ -1,0 +1,126 @@
+{namespace CounterOptions}
+
+/**
+ * Counters
+ */
+{template .render}
+	{@param? destroyOnEndChecked: bool}
+
+	<div class="counters container">
+		<div class="row">
+			<div class="col-md-16">
+				<div class="panel panel-default">
+					<div class="panel-heading">Counters</div>
+					<div class="panel-body">
+						<div class="col-md-4 col-md-offset-1 text-center">
+							<form class="form-inline">
+								<h4>Initial Time</h4>
+
+								<div class="form-group">
+									<label>
+										<select ref="initialTimeHours">
+											{for $index in range(10)}
+												<option value="{$index}">{$index}</option>
+											{/for}
+										</select>
+										Hours
+									</label>
+								</div>
+
+								<div class="form-group">
+									<label>
+										<select ref="initialTimeMinutes">
+											{for $index in range(60)}
+												<option value="{$index}">{$index}</option>
+											{/for}
+										</select>
+										Minutes
+									</label>
+								</div>
+
+								<div class="form-group">
+									<label>
+										<select ref="initialTimeSeconds">
+											{for $index in range(60)}
+												<option value="{$index}">{$index}</option>
+											{/for}
+										</select>
+										Seconds
+									</label>
+								</div>
+							</form>
+						</div>
+
+						<div class="col-md-4 col-md-offset-1 text-center">
+							<form class="form-inline">
+								<h4>End Time</h4>
+
+								<div class="form-group">
+									<label>
+										<select ref="endTimeHours">
+											{for $index in range(10)}
+												<option value="{$index}">{$index}</option>
+											{/for}
+										</select>
+										Hours
+									</label>
+								</div>
+
+								<div class="form-group">
+									<label>
+										<select ref="endTimeMinutes">
+											{for $index in range(60)}
+												<option value="{$index}">{$index}</option>
+											{/for}
+										</select>
+										Minutes
+									</label>
+								</div>
+
+								<div class="form-group">
+									<label>
+										<select ref="endTimeSeconds">
+											{for $index in range(60)}
+												<option value="{$index}">{$index}</option>
+											{/for}
+										</select>
+										Seconds
+									</label>
+								</div>
+							</form>
+						</div>
+
+						<div class="col-md-4 col-md-offset-1 text-center">
+							<form class="form-inline">
+								<h4>Options</h4>
+								<div class="form-group">
+									<label>Countdown:
+										<input ref="countdown" type="checkbox" checked="checked"></input>
+									</label>
+								</div>
+
+								<div class="form-group">
+									<label>Destroy on End:
+										{let $destroyOnEndCheckedAttribute kind="attributes"}
+											{if $destroyOnEndChecked}
+												checked="checked"
+											{/if}
+										{/let}
+										<input ref="destroyOnEnd" type="checkbox" {$destroyOnEndCheckedAttribute}></input>
+									</label>
+								</div>
+							</form>
+						</div>
+
+						<div class="col-md-16 text-center">
+							<button class="btn btn-sm btn-default" data-onclick="_handleCreateCounter">Create Counter</button>
+							<button class="btn btn-sm btn-success" data-onclick="_handleStartCounter">Start</button>
+							<button class="btn btn-sm btn-warning" data-onclick="_handleStopCounter">Stop</button>
+							<button class="btn btn-sm btn-danger" data-onclick="_handleResetCounter">Reset</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+{/template}
