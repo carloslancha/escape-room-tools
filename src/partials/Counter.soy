@@ -1,0 +1,30 @@
+{namespace Counter}
+
+/**
+ * Counter
+ */
+{template .render}
+	{@param time: int }
+
+	{let $seconds: floor($time % 3600 % 60) /}
+	{let $minutes: floor($time % 3600 / 60) /}
+	{let $hours: floor($time / 3600) /}
+
+	<div class="counter text-center">
+		<span class="hours">
+			{$hours < 10 ? '0' + $hours : $hours}
+		</span>
+
+		<span class="separator"> : </span>
+
+		<span class="minutes">
+			{$minutes < 10 ? '0' + $minutes : $minutes}
+		</span>
+
+		<span class="separator"> : </span>
+
+		<span class="seconds">
+			{$seconds < 10 ? '0' + $seconds : $seconds}
+		</span>
+	</div>
+{/template}
