@@ -13,7 +13,7 @@ gulp.task('run', ['build'], () => {
 
 	server.start();
 
-	gulp.watch(['src/**/*.css', 'src/**/*.js', 'src/**/*.soy'], ['build']);
+	gulp.watch(['src/**/*.css', 'src/**/*.scss', 'src/**/*.js', 'src/**/*.soy'], ['build']);
 
     gulp.watch('server/**/*.js', function() {
       server.start.bind(server)();
