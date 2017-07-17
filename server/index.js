@@ -5,6 +5,7 @@ var io = require('socket.io')(server);
 
 var CounterCollection = require("./CounterCollection.js");
 
+let clue;
 let counterCollection = new CounterCollection();
 
 function massageCounterData(counter) {
@@ -31,6 +32,7 @@ function massageCounters(counters) {
 // SOCKET EVENTS
 io.on('connection', function(socket) {
 
+	// COUNTERS EVENTS
 	socket.on('createCounter', (config) => {
 		let counter = counterCollection.add(config);
 
@@ -102,6 +104,27 @@ io.on('connection', function(socket) {
 		io.sockets.emit('countersChanged', {
 			counters: massageCounters(counterCollection.getAll())
 		});
+	});
+
+	// CLUES EVENTS
+	socket.on('getClue', (newClue) => {
+		io.sockets.emit('newClue', clue);
+	});
+
+	socket.on('newClue', (newClue) => {
+		if (newClue === '') {
+			return false;
+		}
+
+		clue = newClue;
+
+		io.sockets.emit('newClue', clue);
+	});
+
+	socket.on('removeClue', () => {
+		clue = undefined;
+
+		io.sockets.emit('newClue', clue);
 	});
 });
 
