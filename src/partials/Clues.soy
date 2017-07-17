@@ -1,0 +1,36 @@
+{namespace Clues}
+
+/**
+ * Counter
+ */
+{template .render}
+	{@param? clue: string}
+
+	<div class="clues container">
+		<div class="row">
+			<div class="col-md-16">
+				<div class="panel panel-default">
+					<div class="panel-heading">Clues</div>
+					<div class="panel-body">
+						{if isNonnull($clue)}
+							<p>
+								{$clue}
+								<button class="btn-icon btn-squared icon-16-cancel" data-onclick="_handleRemoveClue"></button>
+							</p>
+						{/if}
+
+						<form data-onsubmit="_handleSubmitClue">
+							<div class="form-group">
+								<textarea class="form-control" ref="clue"></textarea>
+							</div>
+							<div class="form-group">
+								<input class="btn btn-sm btn-primary" type="submit" value="Send"></input>
+								<input class="btn btn-sm btn-default" rows="5" type="reset" value="Reset"></input>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+{/template}
