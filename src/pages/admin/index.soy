@@ -1,0 +1,69 @@
+---
+title: "Admin"
+description: "Something nice and compelling about the project. Make it short and sweet."
+---
+
+{namespace adminIndex}
+
+/**
+ */
+{template .render}
+	{@param? _createCounter: any}
+	{@param? _newClue: any}
+	{@param? _removeClue: any}
+	{@param? _resetCounter: any}
+	{@param? _startCounter: any}
+	{@param? _stopCounter: any}
+	{@param? clue: string}
+	{@param? counters: list<?>}
+
+	{call main.render data="all"}
+		{param content kind="html"}
+			{if $counters}
+				{foreach $counter in $counters}
+					{call Counter.render}
+						{param time: $counter.time /}
+					{/call}
+				{/foreach}
+			{/if}
+
+			{call CounterOptions.render}
+				{param destroyOnEndChecked: $counters and length($counters) > 0 /}
+				{param events: [
+					'createCounter': $_createCounter,
+					'resetCounter': $_resetCounter,
+					'startCounter': $_startCounter,
+					'stopCounter': $_stopCounter
+				] /}
+			{/call}
+
+			{call Clues.render}
+				{param clue: $clue /}
+				{param events: [
+					'newClue': $_newClue,
+					'removeClue': $_removeClue
+				] /}
+			{/call}
+
+			{call .footer /}
+		{/param}
+	{/call}
+{/template}
+
+/**
+ *
+ */
+{template .footer}
+	<footer class="footer">
+		<div class="container">
+			<div class="row">
+				<p class="footer-description col-md-6 col-md-offset-2">
+					Copyright © 2017 <a href="https://liferay.com">Liferay, Inc</a>
+				</p>
+				<p class="footer-description col-md-6">
+					Powered by <a href="http://wedeploy.com">WeDeploy™</a>
+				</p>
+			</div>
+		</div>
+	</footer>
+{/template}
