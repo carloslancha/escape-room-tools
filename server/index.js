@@ -8,6 +8,8 @@ var CONFIG = require('./config.js');
 
 var CounterCollection = require("./CounterCollection.js");
 
+let clue;
+let countingClues = [];
 let counterCollection = new CounterCollection();
 
 function massageCounterData(counter) {
@@ -105,6 +107,60 @@ io.on('connection', function(socket) {
 
 		io.sockets.emit('countersChanged', {
 			counters: massageCounters(counterCollection.getAll())
+		});
+	});
+
+	// CLUES EVENTS
+	socket.on('getClue', (newClue) => {
+		io.sockets.emit('newClue', {
+			clue: clue,
+			countingClues: countingClues
+		});
+	});
+
+	socket.on('newClue', (newClue) => {
+		if (newClue === '') {
+			return false;
+		}
+
+		clue = newClue;
+
+		io.sockets.emit('newClue', {
+			clue: clue,
+			countingClues: countingClues
+		});
+	});
+
+	socket.on('newCountingClue', (newClue) => {
+		if (newClue === '') {
+			return false;
+		}
+
+		clue = newClue;
+		countingClues.push(clue);
+
+		io.sockets.emit('newClue', {
+			clue: clue,
+			countingClues: countingClues
+		});
+	});
+
+	socket.on('removeClue', () => {
+		clue = undefined;
+
+		io.sockets.emit('newClue', {
+			clue: clue,
+			countingClues: countingClues
+		});
+	});
+
+	socket.on('resetClues', () => {
+		clue = undefined;
+		countingClues = [];
+
+		io.sockets.emit('newClue', {
+			clue: clue,
+			countingClues: countingClues
 		});
 	});
 });
