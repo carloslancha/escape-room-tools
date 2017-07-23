@@ -6,6 +6,8 @@ import Admin from './pages/Admin';
 import NotFound from './pages/NotFound';
 import Room from './pages/Room';
 
+import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+
 ReactDOM.render(
 	<BrowserRouter>
 		<Switch>
