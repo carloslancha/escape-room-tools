@@ -1,0 +1,25 @@
+{
+  "name": "escape-room-tools",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "express": "^4.15.3",
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1",
+    "react-router-dom": "^4.1.2",
+    "react-scripts": "1.0.10",
+    "socket.io": "^2.0.3"
+  },
+  "scripts": {
+    "build": "react-scripts build",
+    "dev:client": "react-scripts start",
+    "dev:server": "NODE_ENV=development nodemon server",
+    "eject": "react-scripts eject",
+    "prod": "react-scripts build && NODE_ENV=production node server",
+    "prod:server": "NODE_ENV=production node server",
+    "test": "react-scripts test --env=jsdom"
+  },
+  "devDependencies": {
+    "nodemon": "^1.11.0"
+  }
+}
