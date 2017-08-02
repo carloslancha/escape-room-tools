@@ -88,7 +88,8 @@ io.on('connection', function(socket) {
 		lastCounter.start();
 
 		io.sockets.emit('countersChanged', {
-			counters: massageCounters(counterCollection.getAll())
+			counters: massageCounters(counterCollection.getAll()),
+			playing: true
 		});
 	});
 
