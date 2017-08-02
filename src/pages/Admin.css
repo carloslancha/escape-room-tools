@@ -1,0 +1,14 @@
+.container {
+	margin-bottom: 20px;
+	margin-top: 20px;
+}
+
+.aux-counters {
+	position: absolute;
+	right: 0;
+	top: 0;
+}
+
+.aux-counters .counter {
+	font-size: 2vw;
+}
