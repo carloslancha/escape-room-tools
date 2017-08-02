@@ -3,6 +3,10 @@
 	margin-top: 20px;
 }
 
+textarea.form-control {
+	margin-bottom: 20px;
+}
+
 .aux-counters {
 	position: absolute;
 	right: 0;
@@ -11,4 +15,8 @@
 
 .aux-counters .counter {
 	font-size: 2vw;
+}
+
+.btn {
+	margin: 0 10px;
 }

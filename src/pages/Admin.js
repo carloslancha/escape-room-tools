@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-//import { Link } from 'react-router-dom';
 
 import Counter from '../components/Counter.js';
 import socket from '../components/socket.js';
@@ -11,8 +10,9 @@ class Admin extends Component {
 		super(props);
 
 		this.state = {
-			lastClue: '',
-			auxCounters: []
+			auxCounters: [],
+			countingClues: [],
+			lastClue: ''
 		};
 	}
 
@@ -27,7 +27,8 @@ class Admin extends Component {
 			this.setState(
 				{
 					auxCounters: event.counters,
-					mainCounter: mainCounter
+					mainCounter: mainCounter,
+					playingCounter: event.playing
 				}
 			);
 		});
@@ -35,6 +36,7 @@ class Admin extends Component {
 		socket.on('newClue', (event) => {
 			this.setState(
 				{
+					countingClues: event.countingClues,
 					lastClue: event.clue
 				}
 			);
@@ -95,8 +97,10 @@ class Admin extends Component {
 	}
 
 	_reset() {
-		socket.emit('resetCounter');
-		socket.emit('resetClues');
+		if (window.confirm('This will reset all the game to default values. Continue?')) {
+			socket.emit('resetCounter');
+			socket.emit('resetClues');
+		}
 	}
 
 	_startCounter() {
@@ -111,7 +115,7 @@ class Admin extends Component {
 		return (
 			<div className="admin">
 				<div className="container">
-					<div className="col-md-12">
+					<div className="col-md-12 text-center">
 						{this.state.mainCounter &&
 							<Counter time={this.state.mainCounter.time}	/>
 						}
@@ -132,14 +136,24 @@ class Admin extends Component {
 
 				<div className="container">
 					<div className="col-md-12 text-center">
-						<button className="btn btn-primary" onClick={() => this._startCounter()} type="button">Start</button>
-						<button className="btn btn-warning" onClick={() => this._stopCounter()} type="button">Stop</button>
-						<button className="btn btn-success" onClick={() => this._addFiveMinutes()} type="button">+5 Minutes</button>
+						{!this.state.playingCounter &&
+							<button className="btn btn-primary" onClick={() => this._startCounter()} type="button">Start</button>
+						}
+						{this.state.playingCounter &&
+							<button className="btn btn-warning" onClick={() => this._stopCounter()} type="button">Stop</button>
+						}
+						{this.state.auxCounters.length === 0 &&
+							<button className="btn btn-success" onClick={() => this._addFiveMinutes()} type="button">+5 Minutes</button>
+						}
 						<button className="btn btn-danger" onClick={() => this._reset()} type="button">Reset</button>
 					</div>
 				</div>
 
 				<div className="container">
+					<div>
+						<span>Counting Clues: {this.state.countingClues.length}</span>
+					</div>
+
 					{this.state.lastClue &&
 						<div>
 							<span>Current clue: {this.state.lastClue}</span>
@@ -148,6 +162,7 @@ class Admin extends Component {
 							</button>
 						</div>
 					}
+
 					<textarea className="form-control" onChange={this._handleNewClueChange.bind(this)} placeholder="Introduce a clue" rows="5" value={this.state.clue} />
 					<button className="btn btn-primary pull-right" onClick={() => this._newCountingClue()} type="button">Send and Count</button>
 					<button className="btn btn-primary pull-right" onClick={() => this._newClue()} type="button">Send</button>
