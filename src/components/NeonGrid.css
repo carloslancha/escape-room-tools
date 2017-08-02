@@ -1,0 +1,119 @@
+
+.grid {
+  top: -400px;
+  bottom: -400px;
+  left: -400px;
+  right: -400px;
+  position: absolute;
+  /*background-color: #313640;*/
+  background-color: #000;
+  background-image: -webkit-linear-gradient(#FF0092 1px, transparent 2px), -webkit-linear-gradient(left, #FF0092 1px, transparent 2px);
+  background-image: linear-gradient(#FF0092 1px, transparent 2px), linear-gradient(90deg, #FF0092 1px, transparent 2px);
+  background-size: 3% 3%, 3% 3%;
+  background-position: 0 0, 0 0;
+  -webkit-transform: perspective(300px) rotateX(80deg);
+          transform: perspective(300px) rotateX(80deg);
+  z-index: -1;
+}
+
+.grid {
+  -webkit-animation: throughSpace 2s linear;
+          animation: throughSpace 2s linear;
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+}
+
+@-webkit-keyframes throughSpace {
+  0% {
+    -webkit-transform: perspective(300px) rotateX(80deg) translateY(0%);
+            transform: perspective(300px) rotateX(80deg) translateY(0%);
+  }
+  100% {
+    -webkit-transform: perspective(300px) rotateX(80deg) translateY(5.8%);
+            transform: perspective(300px) rotateX(80deg) translateY(5.8%);
+  }
+}
+
+@keyframes throughSpace {
+  0% {
+    -webkit-transform: perspective(300px) rotateX(80deg) translateY(0%);
+            transform: perspective(300px) rotateX(80deg) translateY(0%);
+  }
+  100% {
+    -webkit-transform: perspective(300px) rotateX(80deg) translateY(5.8%);
+            transform: perspective(300px) rotateX(80deg) translateY(5.8%);
+  }
+}
+
+/*SKY AND STUFF*/
+@keyframes move-twink-back {
+    from {background-position:0 0;}
+    to {background-position:-10000px 5000px;}
+}
+@-webkit-keyframes move-twink-back {
+    from {background-position:0 0;}
+    to {background-position:-10000px 5000px;}
+}
+@-moz-keyframes move-twink-back {
+    from {background-position:0 0;}
+    to {background-position:-10000px 5000px;}
+}
+@-ms-keyframes move-twink-back {
+    from {background-position:0 0;}
+    to {background-position:-10000px 5000px;}
+}
+
+@keyframes move-clouds-back {
+    from {background-position:0 0;}
+    to {background-position:10000px 0;}
+}
+@-webkit-keyframes move-clouds-back {
+    from {background-position:0 0;}
+    to {background-position:10000px 0;}
+}
+@-moz-keyframes move-clouds-back {
+    from {background-position:0 0;}
+    to {background-position:10000px 0;}
+}
+@-ms-keyframes move-clouds-back {
+    from {background-position: 0;}
+    to {background-position:10000px 0;}
+}
+
+.stars, .twinkling, .clouds {
+  position:absolute;
+  top:0;
+  left:0;
+  right:0;
+  bottom:0;
+  width:100%;
+  height:100%;
+  display:block;
+}
+
+.stars {
+  background:#000 url('../assets/stars.png') repeat top center;
+  z-index:-5;
+}
+
+.twinkling{
+  background:transparent url('../assets/twinkling.png') repeat top center;
+  z-index:-4;
+
+  -moz-animation:move-twink-back 200s linear infinite;
+  -ms-animation:move-twink-back 200s linear infinite;
+  -o-animation:move-twink-back 200s linear infinite;
+  -webkit-animation:move-twink-back 200s linear infinite;
+  animation:move-twink-back 200s linear infinite;
+}
+
+.clouds{
+    background:transparent url('../assets/clouds.png') repeat top center;
+    z-index:-2;
+
+  -moz-animation:move-clouds-back 200s linear infinite;
+  -ms-animation:move-clouds-back 200s linear infinite;
+  -o-animation:move-clouds-back 200s linear infinite;
+  -webkit-animation:move-clouds-back 200s linear infinite;
+  animation:move-clouds-back 200s linear infinite;
+}
