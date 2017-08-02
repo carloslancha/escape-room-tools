@@ -1,13 +1,8 @@
-body {
-  background-color: #313640 !important;
-  overflow: hidden;
-}
-
-.counters.marginless .counter {
+.room .counters.marginless .counter {
 	line-height: 1em;
 }
 
-.counter {
+.room .counter {
 	color: #FF0092;
 	font-family: 'digital';
 	font-size: 17vw;
