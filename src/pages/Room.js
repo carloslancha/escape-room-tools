@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-//import { Link } from 'react-router-dom';
+import Sound from 'react-sound';
 
 import Counter from '../components/Counter.js';
 import NeonGrid from '../components/NeonGrid.js';
@@ -7,6 +7,8 @@ import Terminal from '../components/Terminal.js';
 import socket from '../components/socket.js';
 
 import './Room.css';
+import endMp3 from '../assets/end.mp3';
+import newClueMp3 from '../assets/new-clue.mp3';
 
 class Room extends Component {
 	constructor(props) {
@@ -26,7 +28,8 @@ class Room extends Component {
 			this.setState(
 				{
 					extraCounter: extraCounter,
-					mainCounter: mainCounter
+					mainCounter: mainCounter,
+					playEndSound: mainCounter && mainCounter.time === 0
 				}
 			);
 		});
@@ -35,7 +38,8 @@ class Room extends Component {
 			this.setState(
 				{
 					clue: event.clue,
-					countingClues: event.countingClues
+					countingClues: event.countingClues,
+					playClueSound: !!event.clue
 				}
 			);
 		});
@@ -82,6 +86,22 @@ class Room extends Component {
 				}
 
 				<NeonGrid />
+
+				{this.state.playClueSound &&
+					<Sound
+						onFinishedPlaying={() => {this.setState({playClueSound: false})}}
+						playStatus={this.state.playClueSound ? Sound.status.PLAYING : Sound.status.STOPPED}
+						url={newClueMp3}
+				    />
+				}
+
+				{this.state.playEndSound &&
+					<Sound
+						onFinishedPlaying={() => {this.setState({playEndSound: false})}}
+						playStatus={this.state.playEndSound ? Sound.status.PLAYING : Sound.status.STOPPED}
+						url={endMp3}
+				    />
+				}
 			</div>
 		);
 	}
